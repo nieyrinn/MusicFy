@@ -19,7 +19,7 @@ After the backend was set up, I moved on to the frontend development using Angul
 One of the main challenges I encountered was fetching and displaying date information from the backend API correctly. The data wasn’t coming through as expected, which led to some debugging. After adjusting both the frontend and backend, I was able to ensure the correct format was displayed.
 
 ## Why I Chose This Tech Stack
-I chose Angular and Django because I had already experience with both technologies. Angular provides a clean and efficient way to build single-page applications, while Django offers a nice backend framework with rapid API development capabilities. This combination help me to create a functional platform with a good user experience.
+I chose Angular and Django because I had already experience with both technologies during the "Web-Development" course from my uni. Angular provides a clean and efficient way to build single-page applications, while Django offers a nice backend framework with rapid API development capabilities. This combination help me to create a functional platform with a good user experience.
 
 ### Backend (Django)
 1. **Clone the repository**:
