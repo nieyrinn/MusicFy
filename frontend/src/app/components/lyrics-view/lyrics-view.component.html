@@ -1,0 +1,114 @@
+<div class="lyrics-view-container">
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ error }}</p>
+        <button mat-button color="primary" (click)="loadSongAndLyrics()">Try Again</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && !error && song" class="lyrics-content-container">
+    <div class="song-header">
+      <div class="back-button">
+        <button mat-icon-button [routerLink]="['/albums', song.album.id, 'songs']">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <div class="song-info">
+        <h1>{{ song.title }}</h1>
+        <h2>
+          <a [routerLink]="['/artists', song.artist.id, 'albums']">{{ song.artist.name }}</a>
+          <span class="separator">•</span>
+          <a [routerLink]="['/albums', song.album.id, 'songs']">{{ song.album.title }}</a>
+        </h2>
+      </div>
+    </div>
+
+    <div class="lyrics-section">
+      <div class="lyrics-wrapper">
+        <div class="lyrics-header">
+          <h3>
+            <mat-icon>music_note</mat-icon>
+            Lyrics
+          </h3>
+          <div class="annotation-instructions">
+            <mat-icon>info</mat-icon>
+            <span>Select text to add an annotation</span>
+          </div>
+        </div>
+
+        <mat-card class="lyrics-card">
+          <mat-card-content>
+            <div class="lyrics-content" (mouseup)="onTextSelection()">
+              <ng-container *ngIf="lyrics && lyrics.content">
+                <span *ngFor="let item of lyricsWithAnnotations; let i = index" 
+                      [ngClass]="item.classes"
+                      (click)="item.annotationId && showAnnotation(annotations.find(a => a.id === item.annotationId)!)">
+                  {{ item.char }}
+                </span>
+              </ng-container>
+              <div *ngIf="!lyrics || !lyrics.content" class="no-lyrics">
+                No lyrics available for this song.
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="annotation-section">
+        <div *ngIf="!showAnnotationForm && !activeAnnotation" class="no-annotation-active">
+          <mat-icon>format_quote</mat-icon>
+          <p>Select text in the lyrics to add an annotation, or click on highlighted text to view annotations.</p>
+        </div>
+
+        <div *ngIf="showAnnotationForm" class="annotation-form">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Add Annotation</mat-card-title>
+              <mat-card-subtitle>
+                <div class="selected-text">"{{ selectedText }}"</div>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Your annotation</mat-label>
+                <textarea matInput [(ngModel)]="newAnnotation" rows="5" placeholder="What does this mean?"></textarea>
+              </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="warn" (click)="cancelAnnotation()">Cancel</button>
+              <button mat-raised-button color="primary" [disabled]="!newAnnotation" (click)="saveAnnotation()">Save Annotation</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+        <div *ngIf="activeAnnotation" class="active-annotation">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Annotation</mat-card-title>
+              <mat-card-subtitle>
+                <div class="annotated-text">
+                  "{{ lyrics && lyrics.content ? lyrics.content.substring(activeAnnotation.start_index, activeAnnotation.end_index) : '' }}"
+                </div>
+              </mat-card-subtitle>
+              <button mat-icon-button class="close-button" (click)="hideAnnotation()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-card-header>
+            <mat-card-content>
+              <p class="annotation-content">{{ activeAnnotation.content }}</p>
+              <div class="annotation-meta">
+                <small>Created: {{ activeAnnotation.created_at | date:'medium' }}</small>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

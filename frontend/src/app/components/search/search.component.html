@@ -1,0 +1,100 @@
+<div class="search-container">
+  <div class="search-header">
+    <h1>Search</h1>
+    <p>Find songs, albums, artists</p>
+  </div>
+
+  <div class="search-form">
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="search-input">
+          <mat-label>Search</mat-label>
+          <input 
+            matInput 
+            [formControl]="searchControl" 
+            placeholder="Enter artist, album or song name"
+            autocomplete="off"
+          >
+          <button 
+            mat-icon-button 
+            matSuffix 
+            *ngIf="searchControl.value" 
+            (click)="clearSearch()"
+            aria-label="Clear"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ error }}</p>
+        <button mat-button color="primary" (click)="performSearch(searchControl.value)">Try Again</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="noResults && !loading && !error" class="no-results">
+    <mat-icon>search_off</mat-icon>
+    <p>No results found for "{{ searchControl.value }}"</p>
+    <p class="suggestion">Try a different search term or browse our catalog</p>
+  </div>
+
+  <div *ngIf="searchResults && !loading && !error" class="search-results">
+    <div *ngIf="searchResults.artists.length > 0" class="result-section">
+      <h2>Artists</h2>
+      <div class="artists-grid">
+        <mat-card *ngFor="let artist of searchResults.artists" class="artist-card" [routerLink]="['/artists', artist.id, 'albums']">
+          <div class="artist-image">
+            <mat-icon *ngIf="!artist.image_url" class="placeholder-icon">person</mat-icon>
+            <div *ngIf="artist.image_url" class="artist-img" [style.background-image]="'url(' + artist.image_url + ')'"></div>
+          </div>
+          <mat-card-content>
+            <h3>{{ artist.name }}</h3>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div *ngIf="searchResults.albums.length > 0" class="result-section">
+      <h2>Albums</h2>
+      <div class="albums-grid">
+        <mat-card *ngFor="let album of searchResults.albums" class="album-card" [routerLink]="['/albums', album.id, 'songs']">
+          <div class="album-image">
+            <mat-icon *ngIf="!album.image_url" class="placeholder-icon">album</mat-icon>
+            <div *ngIf="album.image_url" class="album-img" [style.background-image]="'url(' + album.image_url + ')'"></div>
+          </div>
+          <mat-card-content>
+            <h3>{{ album.title }}</h3>
+            <p>{{ album.artist.name }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div *ngIf="searchResults.songs.length > 0" class="result-section">
+      <h2>Songs</h2>
+      <mat-card>
+        <mat-card-content>
+          <mat-nav-list>
+            <a mat-list-item *ngFor="let song of searchResults.songs" [routerLink]="['/songs', song.id]">
+              <mat-icon matListItemIcon>music_note</mat-icon>
+              <div matListItemTitle>{{ song.title }}</div>
+              <div matListItemLine>{{ song.artist.name }} • {{ song.album.title }}</div>
+              <div matListItemMeta>{{ song.duration }}</div>
+            </a>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

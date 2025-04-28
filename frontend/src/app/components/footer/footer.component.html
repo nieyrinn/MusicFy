@@ -1,0 +1,40 @@
+<footer class="app-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <mat-icon>music_note</mat-icon>
+        <span>Lyrics Annotator</span>
+      </div>
+      
+      <div class="footer-links">
+        <div class="links-group">
+          <h3>Explore</h3>
+          <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/albums">Albums</a></li>
+            <li><a routerLink="/songs">Songs</a></li>
+            <li><a routerLink="/search">Search</a></li>
+          </ul>
+        </div>
+        
+        <div class="links-group">
+          <h3>Content</h3>
+          <ul>
+            <li><a routerLink="/songs">Lyrics</a></li>
+            <li><a routerLink="/search">Artists</a></li>
+            <li><a routerLink="/albums">Albums</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {{ currentYear }} Lyrics Annotator. All rights reserved.
+      </p>
+      <p class="disclaimer">
+        All content is provided for educational purposes only.
+      </p>
+    </div>
+  </div>
+</footer>
