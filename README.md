@@ -5,7 +5,7 @@ MusicFy is a web platform designed to provide information about music artists, t
 ## Features
 - **Artists**: View the short information about music artists.
 - **Music Territory**: Browse the albums and songs released by artists.
-- **Song Annotations**: Explore explanations and meanings behind song lyrics.
+- **Song Annotations**: Explore explanations and meanings behind song lyrics..
 
 ## Tech Stack
 - **Frontend**: Angular
