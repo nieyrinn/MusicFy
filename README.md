@@ -24,7 +24,7 @@ I chose Angular and Django because I had already experience with both technologi
 ### Backend (Django)
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/.../musicfy-backend.git
+   git clone https://github.com/nieyrinn/MusicFy.git
    ```
 2. **Navigate into the backend directory**:
    ```bash
@@ -45,19 +45,15 @@ I chose Angular and Django because I had already experience with both technologi
    The backend should now be running on `http://localhost:8000`.
 
 ### Frontend (Angular)
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/nieyrinn/MusicFy.git
-   ```
-2. **Navigate into the frontend directory**:
+1. **Navigate into the frontend directory**:
    ```bash
    cd Musicfy/frontend
    ```
-3. **Install the necessary dependencies**:
+2. **Install the necessary dependencies**:
    ```bash
    npm install
    ```
-4. **Run the Angular development server**:
+3. **Run the Angular development server**:
    ```bash
    ng serve
    ```
