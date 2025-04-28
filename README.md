@@ -28,7 +28,7 @@ I chose Angular and Django because I had already experience with both technologi
    ```
 2. **Navigate into the backend directory**:
    ```bash
-   cd musicfy-backend
+   cd Musicfy/backend
    ```
 3. **Install dependencies**:
    ```bash
@@ -47,11 +47,11 @@ I chose Angular and Django because I had already experience with both technologi
 ### Frontend (Angular)
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/.../musicfy-frontend.git
+   git clone https://github.com/nieyrinn/MusicFy.git
    ```
 2. **Navigate into the frontend directory**:
    ```bash
-   cd musicfy-frontend
+   cd Musicfy/frontend
    ```
 3. **Install the necessary dependencies**:
    ```bash
