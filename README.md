@@ -21,6 +21,9 @@ One of the main challenges I encountered was fetching and displaying date inform
 ## Why I Chose This Tech Stack
 I chose Angular and Django because I had already experience with both technologies during the "Web-Development" course from my uni. Angular provides a clean and efficient way to build single-page applications, while Django offers a nice backend framework with rapid API development capabilities. This combination help me to create a functional platform with a good user experience.
 
+## Link to video:
+https://drive.google.com/file/d/1pKXgSXpAdw33j65liO5X0oATA8NjfyzB/view?usp=share_link
+
 ### Backend (Django)
 1. **Clone the repository**:
    ```bash
