@@ -73,8 +73,8 @@
                 <mat-icon class="song-icon">music_note</mat-icon>
                 {{ song.title }}
               </td>
-              <td *ngIf="!album && !artist">{{ song.artist?.name }}</td>
-              <td *ngIf="!album">{{ song.album?.title }}</td>
+              <td *ngIf="!album && !artist">{{ song.artist.name }}</td>
+              <td *ngIf="!album">{{ song.album.title }}</td>
               <td class="duration">{{ song.duration }}</td>
               <td class="actions">
                 <button mat-icon-button color="primary" matTooltip="View Lyrics">
