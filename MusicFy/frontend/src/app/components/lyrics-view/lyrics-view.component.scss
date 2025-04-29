@@ -1,0 +1,326 @@
+.lyrics-view-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  animation: fadeIn 0.8s ease-out;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+}
+
+.error-container mat-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #fff6f6 0%, #ffebeb 100%);
+  border-left: 4px solid #ff4757;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.1);
+}
+
+.error-container p {
+  color: #ff4757;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.song-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.back-button button {
+  transition: all 0.3s ease;
+  margin-right: 20px;
+  background: rgba(106, 48, 147, 0.1);
+}
+
+.back-button button:hover {
+  transform: scale(1.1);
+  background: rgba(106, 48, 147, 0.2);
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-info h1 {
+  color: #4a148c;
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+
+.song-info h2 {
+  color: #7b1fa2;
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.song-info a {
+  color: #6a3093;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.song-info a:hover {
+  color: #a044ff;
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 10px;
+  color: #b39ddb;
+}
+
+.lyrics-section {
+  display: flex;
+  gap: 30px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@media (max-width: 992px) {
+  .lyrics-section {
+    flex-direction: column;
+  }
+}
+
+.lyrics-wrapper {
+  flex: 2;
+}
+
+.lyrics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.lyrics-header h3 {
+  display: flex;
+  align-items: center;
+  color: #6a3093;
+  font-size: 1.5rem;
+}
+
+.lyrics-header .mat-icon {
+  margin-right: 10px;
+  color: #8e54e9;
+}
+
+.annotation-instructions {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 0.9rem;
+  background: rgba(106, 48, 147, 0.05);
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.annotation-instructions .mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  color: #8e54e9;
+}
+
+.lyrics-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(106, 48, 147, 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+.lyrics-card:hover {
+  box-shadow: 0 10px 25px rgba(106, 48, 147, 0.2) !important;
+}
+
+.lyrics-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+  padding: 10px 0;
+  user-select: text;
+  cursor: text;
+}
+
+.lyrics-content span {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.lyrics-content span:hover {
+  background: rgba(106, 48, 147, 0.05);
+}
+
+.lyrics-content .annotated {
+  background: rgba(138, 43, 226, 0.15);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.lyrics-content .annotated:hover {
+  background: rgba(138, 43, 226, 0.25);
+}
+
+.lyrics-content .active-annotation {
+  background: rgba(138, 43, 226, 0.3);
+  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+.no-lyrics {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 30px;
+}
+
+.annotation-section {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+.no-annotation-active {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666;
+  padding: 40px 20px;
+  background: rgba(106, 48, 147, 0.03);
+  border-radius: 12px;
+  border: 2px dashed rgba(106, 48, 147, 0.1);
+}
+
+.no-annotation-active .mat-icon {
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  color: #b39ddb;
+  opacity: 0.7;
+}
+
+.no-annotation-active p {
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+.active-annotation {
+  position: sticky;
+  top: 20px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.active-annotation mat-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(106, 48, 147, 0.15) !important;
+  border-top: 4px solid #8e54e9;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+  color: #ff4757;
+}
+
+.annotated-text {
+  font-style: italic;
+  color: #6a3093;
+  margin-top: 5px;
+  padding: 5px 0;
+  border-top: 1px solid #e1bee7;
+  border-bottom: 1px solid #e1bee7;
+}
+
+.annotation-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.annotation-meta {
+  color: #666;
+  font-size: 0.85rem;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .song-info h1 {
+    font-size: 1.8rem;
+  }
+  
+  .song-info h2 {
+    font-size: 1.1rem;
+  }
+  
+  .lyrics-content {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .song-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .back-button {
+    margin-bottom: 15px;
+  }
+  
+  .lyrics-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .annotation-instructions {
+    margin-top: 10px;
+  }
+}

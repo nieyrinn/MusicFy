@@ -1,0 +1,60 @@
+<header class="app-header">
+  <mat-toolbar color="primary">
+    <div class="container">
+      <div class="toolbar-row">
+        <div class="logo">
+          <a routerLink="/" class="logo-link">
+            <mat-icon>music_note</mat-icon>
+            <span class="logo-text">MusicFy</span>
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+          </a>
+          <a mat-button routerLink="/albums" routerLinkActive="active">
+            <mat-icon>album</mat-icon>
+            <span>Albums</span>
+          </a>
+          <a mat-button routerLink="/songs/" routerLinkActive="active">
+            <mat-icon>music_note</mat-icon>
+            <span>Songs</span>
+          </a>
+        </div>
+
+        <div class="search-actions">
+          <form 
+            *ngIf="isSearchActive" 
+            class="header-search-form" 
+            (ngSubmit)="submitSearch($event)"
+          >
+            <mat-form-field class="header-search-input" appearance="outline">
+              <mat-label>Search</mat-label>
+              <input matInput [formControl]="searchControl" placeholder="Search songs, albums, artists...">
+              <button 
+                mat-icon-button 
+                matSuffix
+                type="button"
+                (click)="toggleSearch()"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+
+          <button 
+            mat-icon-button 
+            class="search-toggle-btn"
+            [class.hidden]="isSearchActive"
+            (click)="toggleSearch()"
+            aria-label="Search"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+</header>

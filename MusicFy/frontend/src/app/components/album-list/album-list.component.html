@@ -1,0 +1,53 @@
+<div class="album-list-container">
+  <div class="page-header">
+    <h1 *ngIf="!artist">Albums</h1>
+    <div *ngIf="artist" class="artist-header">
+      <h1>Albums by {{ artist.name }}</h1>
+      <p *ngIf="artist.description">{{ artist.description }}</p>
+      <div class="artist-actions">
+        <a [routerLink]="['/artists', artist.id, 'songs']" mat-button color="primary">
+          <mat-icon>music_note</mat-icon> View Songs
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ error }}</p>
+        <button mat-button color="primary" (click)="loadAlbums()">Try Again</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && !error" class="albums-content">
+    <div *ngIf="albums.length === 0" class="no-albums">
+      <mat-icon>album</mat-icon>
+      <p>No albums found.</p>
+    </div>
+
+    <div *ngIf="albums.length > 0" class="albums-grid">
+      <mat-card *ngFor="let album of albums" class="album-card" [routerLink]="['/albums', album.id, 'songs']">
+        <div class="album-image">
+          <mat-icon *ngIf="!album.image_url" class="placeholder-icon">album</mat-icon>
+          <div *ngIf="album.image_url" class="album-img" [style.background-image]="'url(' + album.image_url + ')'"></div>
+        </div>
+        <mat-card-content>
+          <h2>{{ album.title }}</h2>
+          <p class="artist-name" *ngIf="!artist">{{ album.artist.name }}</p>
+          <p class="release-date">Released: {{ album.release_date | date }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">
+            <mat-icon>playlist_play</mat-icon> View Songs
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

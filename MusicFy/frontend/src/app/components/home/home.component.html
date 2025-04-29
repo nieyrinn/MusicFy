@@ -1,0 +1,80 @@
+<div class="home-container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Musicfy</h1>
+      <p>Discover, explore, and annotate your favorite songs</p>
+      <div class="hero-buttons">
+        <a routerLink="/albums" mat-raised-button color="primary">Explore Albums</a>
+        <a routerLink="/search" mat-raised-button color="accent">Search Content</a>
+      </div>
+    </div>
+  </section>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ error }}</p>
+        <button mat-button color="primary" (click)="loadFeaturedContent()">Try Again</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && !error" class="content-sections">
+    <section class="featured-albums">
+      <h2>Featured Albums</h2>
+      <div class="albums-grid">
+        <mat-card *ngFor="let album of featuredAlbums" class="album-card" [routerLink]="['/albums', album.id, 'songs']">
+          <mat-card-header>
+            <mat-card-title>{{ album.title }}</mat-card-title>
+            <mat-card-subtitle>{{ album.artist.name }}</mat-card-subtitle>
+          </mat-card-header>
+          <div class="album-image">
+            <mat-icon *ngIf="!album.image_url" class="placeholder-icon">album</mat-icon>
+            <div *ngIf="album.image_url" class="album-img" [style.background-image]="'url(' + album.image_url + ')'"></div>
+          </div>
+          <mat-card-content>
+            <p class="release-date">Released: {{ album.release_date | date }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="section-action">
+        <a routerLink="/albums" mat-button color="primary">View All Albums</a>
+      </div>
+    </section>
+
+    <section class="popular-songs">
+      <h2>Popular Songs</h2>
+      <mat-list>
+        <mat-list-item *ngFor="let song of popularSongs" [routerLink]="['/songs', song.id]">
+          <mat-icon matListItemIcon>music_note</mat-icon>
+          <div matListItemTitle>{{ song.title }}</div>
+          <div matListItemLine>{{ song.artist.name }}</div>
+          <div matListItemMeta>{{ song.duration }}</div>
+        </mat-list-item>
+      </mat-list>
+      <div class="section-action">
+        <a routerLink="/songs" mat-button color="primary">View All Songs</a>
+      </div>
+    </section>
+
+    <section class="featured-artists">
+      <h2>Featured Artists</h2>
+      <div class="artists-grid">
+        <mat-card *ngFor="let artist of featuredArtists" class="artist-card" [routerLink]="['/artists', artist.id, 'albums']">
+          <div class="artist-image">
+            <mat-icon *ngIf="!artist.image_url" class="placeholder-icon">person</mat-icon>
+            <div *ngIf="artist.image_url" class="artist-img" [style.background-image]="'url(' + artist.image_url + ')'"></div>
+          </div>
+          <mat-card-content>
+            <h3>{{ artist.name }}</h3>
+            <p>{{ artist.description | slice:0:100 }}...</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </section>
+  </div>
+</div>
