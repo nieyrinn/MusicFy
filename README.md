@@ -21,9 +21,6 @@ One of the main challenges I encountered was fetching and displaying date inform
 ## Why I Chose This Tech Stack
 I chose Angular and Django because I had already experience with both technologies during the "Web-Development" course from my uni. Angular provides a clean and efficient way to build single-page applications, while Django offers a nice backend framework with rapid API development capabilities. This combination help me to create a functional platform with a good user experience.
 
-## Link to video:
-https://drive.google.com/file/d/1pKXgSXpAdw33j65liO5X0oATA8NjfyzB/view?usp=share_link
-
 ### Backend (Django)
 1. **Clone the repository**:
    ```bash
@@ -61,3 +58,8 @@ https://drive.google.com/file/d/1pKXgSXpAdw33j65liO5X0oATA8NjfyzB/view?usp=share
    ng serve
    ```
    The frontend should now be accessible at `http://localhost:4200`.
+
+![telegram-cloud-photo-size-2-5296318627801928461-y](https://github.com/user-attachments/assets/d26d24ed-cddb-4d78-8e90-1f960c223cfe)
+![telegram-cloud-photo-size-2-5296318627801928470-y](https://github.com/user-attachments/assets/65958c4b-b17f-47f7-8d8e-ac9ab4ad9e3c)
+![telegram-cloud-photo-size-2-5296318627801928469-y](https://github.com/user-attachments/assets/545a114d-71d0-496a-9d17-99b402471e2a)
+
